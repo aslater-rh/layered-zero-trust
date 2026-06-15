@@ -49,7 +49,7 @@ spire:
 
 clusterGroup:
   name: hub
-  isHubCluster: true
+  isHubCluster: false
   namespaces:
     open-cluster-management:
     vault:
@@ -112,11 +112,11 @@ clusterGroup:
       labels:
         openshift.io/cluster-monitoring: "true"
   subscriptions:
-    acm:
-      name: advanced-cluster-management
-      namespace: open-cluster-management
-      channel: release-2.15
-      catalogSource: redhat-operators
+    # acm:
+    #   name: advanced-cluster-management
+    #   namespace: open-cluster-management
+    #   channel: release-2.15
+    #   catalogSource: redhat-operators
     eso:
       name: openshift-external-secrets-operator
       namespace: external-secrets-operator
@@ -280,35 +280,35 @@ clusterGroup:
         
         # Note: additionalCertificates (complex nested array) temporarily disabled
         # Need to find proper way to pass complex structures in Validated Patterns
-    acm:
-      name: acm
-      namespace: open-cluster-management
-      argoProject: hub
-      chart: acm
-      chartVersion: 0.2.*
-      annotations:
-        argocd.argoproj.io/sync-wave: "5"
-      ignoreDifferences:
-        - group: internal.open-cluster-management.io
-          kind: ManagedClusterInfo
-          jsonPointers:
-            - /spec/loggingCA
-      # We override the secret store because we are not provisioning clusters
-      overrides:
-        - name: global.secretStore.backend
-          value: none
-    acm-managed-clusters:
-      name: acm-managed-clusters
-      argoProject: hub
-      path: charts/acm-managed-clusters
-      annotations:
-        argocd.argoproj.io/sync-wave: "10"
-      ignoreDifferences:
-        - group: cluster.open-cluster-management.io
-          kind: ManagedCluster
-          jsonPointers:
-            - /metadata/labels/cloud
-            - /metadata/labels/vendor
+    # acm:
+    #   name: acm
+    #   namespace: open-cluster-management
+    #   argoProject: hub
+    #   chart: acm
+    #   chartVersion: 0.2.*
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "5"
+    #   ignoreDifferences:
+    #     - group: internal.open-cluster-management.io
+    #       kind: ManagedClusterInfo
+    #       jsonPointers:
+    #         - /spec/loggingCA
+    #   # We override the secret store because we are not provisioning clusters
+    #   overrides:
+    #     - name: global.secretStore.backend
+    #       value: none
+    # acm-managed-clusters:
+    #   name: acm-managed-clusters
+    #   argoProject: hub
+    #   path: charts/acm-managed-clusters
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "10"
+    #   ignoreDifferences:
+    #     - group: cluster.open-cluster-management.io
+    #       kind: ManagedCluster
+    #       jsonPointers:
+    #         - /metadata/labels/cloud
+    #         - /metadata/labels/vendor
     compliance-scanning:
       name: compliance-scanning
       namespace: openshift-compliance
@@ -790,8 +790,8 @@ clusterGroup:
 
 
 # List of previously provisioned clusters to import and manage from the Hub cluster
-acmManagedClusters:
-  clusters: []
+# acmManagedClusters:
+#   clusters: []
   # This configuration can be used for use cases Pipeline/Secure Supply Chain
   #  - name: ztvp-spoke-1
   #    clusterGroup: devel
