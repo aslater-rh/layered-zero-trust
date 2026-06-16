@@ -51,6 +51,7 @@ clusterGroup:
   name: hub
   isHubCluster: true
   namespaces:
+    openshift-gitops:
     open-cluster-management:
     vault:
     qtodo:
@@ -111,6 +112,14 @@ clusterGroup:
       operatorGroup: true
       labels:
         openshift.io/cluster-monitoring: "true"
+  extraArgoInstances:
+    - name: common-hub
+      namespace: openshift-gitops
+      sso:
+        provider: dex
+      rbac:
+        defaultPolicy: 'role:readonly'
+        policy: 'g, system:cluster-admins, role:admin'
   subscriptions:
     # acm:
     #   name: advanced-cluster-management
