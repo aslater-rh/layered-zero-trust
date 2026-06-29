@@ -239,7 +239,7 @@ clusterGroup:
       kustomize: {}
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: bootstrap/overlays/rhoai-beta-aws-gpu
+      path: clusters/overlays/rhoai-beta-aws-gpu 
       annotations:
         argocd.argoproj.io/sync-wave: "55"
         
