@@ -216,30 +216,30 @@ clusterGroup:
   #   - '/overrides/values-{{ $.Values.global.localClusterDomain }}.yaml'
   applications:
     # Attempting to deploy AI accelerator project from personal fork
-    ai-accelerator-operators:
-      name: ai-accelerator-operators
-      namespace: openshift-operators
-      argoProject: hub
-      kustomize: {}
-      repoURL: https://github.com/aslater-rh/ai-accelerator.git
-      targetRevision: main
-      path: bootstrap/overlays/rhoai-beta-aws-gpu
-      ignoreDifferences:
-      - group: argoproj.io
-        kind: Application
-        jsonPointers:
-        - /status
-      annotations:
-        argocd.argoproj.io/sync-wave: "50"  # Deploys right after Secure Supply Chain/RHTAS waves
+    # ai-accelerator-operators:
+    #   name: ai-accelerator-operators
+    #   namespace: openshift-operators
+    #   argoProject: hub
+    #   kustomize: {}
+    #   repoURL: https://github.com/aslater-rh/ai-accelerator.git
+    #   targetRevision: main
+    #   path: bootstrap/overlays/rhoai-beta-aws-gpu
+    #   ignoreDifferences:
+    #   - group: argoproj.io
+    #     kind: Application
+    #     jsonPointers:
+    #     - /status
+    #   annotations:
+    #     argocd.argoproj.io/sync-wave: "50"  # Deploys right after Secure Supply Chain/RHTAS waves
     
-    ai-accelerator-apps:
-      name: ai-accelerator-apps
-      namespace: openshift-gitops # Or use your specific AI workspace namespace
-      argoProject: hub
-      kustomize: {}
-      repoURL: https://github.com/aslater-rh/ai-accelerator.git
-      targetRevision: main
-      path: clusters/overlays/rhoai-beta-aws-gpu 
+    # ai-accelerator-apps:
+    #   name: ai-accelerator-apps
+    #   namespace: openshift-gitops # Or use your specific AI workspace namespace
+    #   argoProject: hub
+    #   kustomize: {}
+    #   repoURL: https://github.com/aslater-rh/ai-accelerator.git
+    #   targetRevision: main
+    #   path: clusters/overlays/rhoai-beta-aws-gpu 
       annotations:
         argocd.argoproj.io/sync-wave: "55"
         
