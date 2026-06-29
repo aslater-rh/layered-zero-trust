@@ -220,6 +220,7 @@ clusterGroup:
       name: ai-accelerator-operators
       namespace: openshift-operators
       argoProject: hub
+      sourceType: kustomize
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
       path: bootstrap/overlays/rhoai-beta-aws-gpu
@@ -235,6 +236,7 @@ clusterGroup:
       name: ai-accelerator-apps
       namespace: openshift-gitops # Or use your specific AI workspace namespace
       argoProject: hub
+      sourceType: kustomize
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
       path: bootstrap/overlays/rhoai-beta-aws-gpu
