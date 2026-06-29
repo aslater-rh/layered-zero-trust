@@ -222,7 +222,7 @@ clusterGroup:
       argoProject: hub
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: bootstrap/operators/overlays/default
+      path: bootstrap/overlays/default/rhoai-beta-aws-gpu
       ignoreDifferences:
       - group: argoproj.io
         kind: Application
@@ -237,7 +237,7 @@ clusterGroup:
       argoProject: hub
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: bootstrap/apps/overlays/default
+      path: bootstrap/apps/overlays/rhoai-beta-aws-gpu
       annotations:
         argocd.argoproj.io/sync-wave: "55"
         
