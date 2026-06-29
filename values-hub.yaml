@@ -237,7 +237,7 @@ clusterGroup:
       argoProject: hub
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: bootstrap/apps/overlays/rhoai-beta-aws-gpu
+      path: bootstrap/overlays/rhoai-beta-aws-gpu
       annotations:
         argocd.argoproj.io/sync-wave: "55"
         
