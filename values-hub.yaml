@@ -772,25 +772,25 @@ clusterGroup:
 #      repoURL: https://github.com/vendor/applications.git
 #      targetRevision: main
 # Attempting to deploy AI accelerator project from personal fork
-  ai-accelerator-operators:
-    name: ai-accelerator-operators
-    namespace: openshift-operators
-    argoProject: hub
-    repoURL: https://github.com/aslater-rh/ai-accelerator.git
-    targetRevision: main
-    path: config/operators
-    annotations:
-      argocd.argoproj.io/sync-wave: "50"  # Deploys right after Secure Supply Chain/RHTAS waves
+ai-accelerator-operators:
+  name: ai-accelerator-operators
+  namespace: openshift-operators
+  argoProject: hub
+  repoURL: https://github.com/aslater-rh/ai-accelerator.git
+  targetRevision: main
+  path: config/operators
+  annotations:
+    argocd.argoproj.io/sync-wave: "50"  # Deploys right after Secure Supply Chain/RHTAS waves
 
-  ai-accelerator-apps:
-    name: ai-accelerator-apps
-    namespace: openshift-gitops # Or use your specific AI workspace namespace
-    argoProject: hub
-    repoURL: https://github.com/aslater-rh/ai-accelerator.git
-    targetRevision: main
-    path: config/apps
-    annotations:
-      argocd.argoproj.io/sync-wave: "55"
+ai-accelerator-apps:
+  name: ai-accelerator-apps
+  namespace: openshift-gitops # Or use your specific AI workspace namespace
+  argoProject: hub
+  repoURL: https://github.com/aslater-rh/ai-accelerator.git
+  targetRevision: main
+  path: config/apps
+  annotations:
+    argocd.argoproj.io/sync-wave: "55"
 #  managedSites:
 #    factory:
 #      name: factory
