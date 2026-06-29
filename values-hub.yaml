@@ -222,7 +222,12 @@ clusterGroup:
       argoProject: hub
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: config/operators
+      path: bootstrap/operators/overlays/default
+      ignoreDifferences:
+      - group: argoproj.io
+        kind: Application
+        jsonPointers:
+        - /status
       annotations:
         argocd.argoproj.io/sync-wave: "50"  # Deploys right after Secure Supply Chain/RHTAS waves
     
@@ -232,9 +237,10 @@ clusterGroup:
       argoProject: hub
       repoURL: https://github.com/aslater-rh/ai-accelerator.git
       targetRevision: main
-      path: config/apps
+      path: bootstrap/apps/overlays/default
       annotations:
         argocd.argoproj.io/sync-wave: "55"
+        
     ztvp-certificates:
       name: ztvp-certificates
       namespace: openshift-config
